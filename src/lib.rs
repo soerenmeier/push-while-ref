@@ -19,7 +19,7 @@
 //!
 //! # Example inserting
 //! ```
-//! # use push_and_read::{HashMapOwner, HashMapChild};
+//! use push_and_read::{HashMapOwner, HashMapChild};
 //! let mut map = HashMapOwner::new();
 //! let mut map = map.child();
 //! let v1 = map.insert("10", Box::new(10));
