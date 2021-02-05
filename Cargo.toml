@@ -1,0 +1,14 @@
+[package]
+name = "push-while-ref"
+description = "push while having a reference"
+version = "0.1.0"
+authors = ["Sören Meier <soeren@s-me.ch>"]
+repository = "https://github.com/soerenmeier/push-while-ref"
+edition = "2018"
+license = "MIT OR Apache-2.0"
+keywords = ["push", "insert", "reference"]
+categories = ["data-structures"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
