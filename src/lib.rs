@@ -30,6 +30,7 @@
 
 
 use std::hash::Hash;
+use std::borrow::Borrow;
 use std::collections::HashMap;
 
 #[derive(Debug)]
@@ -104,6 +105,10 @@ where
 		Self(HashMap::new())
 	}
 
+	pub(crate) fn as_ref(&self) -> &HashMap<K, T> {
+		&self.0
+	}
+
 	/// you need to make sure that the pointer is not used after
 	/// VecOwner goes out of scope and that the ptr is only used to cast to a reference
 	#[inline]
@@ -144,6 +149,22 @@ impl<'a, K, T> HashMapChild<'a, K, T>
 where
 	K: Hash + Eq + Clone,
 	T: StaticType {
+
+	/// Returns `true` if the map contains a value for the specified key.
+	///
+	/// ```
+	///	# use push_while_ref::{HashMapOwner, HashMapChild};
+	/// let mut map = HashMapOwner::new();
+	/// let mut map = map.child();
+	/// let value = map.insert("10".to_string(), Box::new(10));
+	/// assert!(map.contains_key("10"));
+	/// ```
+	pub fn contains_key<Q: ?Sized>(&self, k: &Q) -> bool
+	where
+		K: Borrow<Q>,
+		Q: Hash + Eq {
+		self.0.as_ref().contains_key(k)
+	}
 
 	/// Tries to insert key and value
 	/// if key already exists returns None

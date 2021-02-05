@@ -1,7 +1,7 @@
 [package]
 name = "push-while-ref"
 description = "push while having a reference"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Sören Meier <soeren@s-me.ch>"]
 repository = "https://github.com/soerenmeier/push-while-ref"
 edition = "2018"
