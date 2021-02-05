@@ -8,7 +8,8 @@
 //!
 //! # Example pushing
 //! ```
-//! use push_and_read::{VecOwner, VecChild};
+//! use push_while_ref::{VecOwner, VecChild};
+//!
 //! let mut vec = VecOwner::new();
 //! let mut vec = vec.child();
 //! let v1 = vec.push(Box::new(10));
@@ -19,7 +20,8 @@
 //!
 //! # Example inserting
 //! ```
-//! use push_and_read::{HashMapOwner, HashMapChild};
+//! use push_while_ref::{HashMapOwner, HashMapChild};
+//!
 //! let mut map = HashMapOwner::new();
 //! let mut map = map.child();
 //! let v1 = map.insert("10", Box::new(10));
@@ -77,7 +79,7 @@ where T: StaticType {
 	/// without using the current lifetime
 	///
 	/// ```
-	/// # use push_and_read::{VecOwner, VecChild};
+	/// # use push_while_ref::{VecOwner, VecChild};
 	/// let mut vec = VecOwner::new();
 	/// let mut vec = vec.child();
 	/// let v1 = vec.push(Box::new(10));
@@ -135,6 +137,7 @@ where
 		Some(ptr)
 	}
 
+	/// Creates a `HashMapChild` which will allow to interact with the HashMap.
 	pub fn child(&mut self) -> HashMapChild<'_, K, T> {
 		HashMapChild(self)
 	}
@@ -173,7 +176,7 @@ where
 	/// without using the current lifetime
 	///
 	/// ```
-	/// # use push_and_read::{HashMapOwner, HashMapChild};
+	/// # use push_while_ref::{HashMapOwner, HashMapChild};
 	/// let mut map = HashMapOwner::new();
 	/// let mut map = map.child();
 	/// let v1 = map.try_insert("10", Box::new(10)).unwrap();
@@ -198,7 +201,7 @@ where
 	/// Panics if key already exists
 	///
 	/// ```
-	/// # use push_and_read::{HashMapOwner, HashMapChild};
+	/// # use push_while_ref::{HashMapOwner, HashMapChild};
 	/// let mut map = HashMapOwner::new();
 	/// let mut map = map.child();
 	/// let v1 = map.insert("10", Box::new(10));

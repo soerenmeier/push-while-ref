@@ -8,7 +8,8 @@ this is garantie is give by the trait `StaticType`.
 
 # Example pushing
 ```rust
-use push_and_read::{VecOwner, VecChild};
+use push_while_ref::{VecOwner, VecChild};
+
 let mut vec = VecOwner::new();
 let mut vec = vec.child();
 let v1 = vec.push(Box::new(10));
@@ -19,7 +20,8 @@ assert_eq!(*v2, 20);
 
 # Example inserting
 ```rust
-use push_and_read::{HashMapOwner, HashMapChild};
+use push_while_ref::{HashMapOwner, HashMapChild};
+
 let mut map = HashMapOwner::new();
 let mut map = map.child();
 let v1 = map.insert("10", Box::new(10));
